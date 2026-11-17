@@ -1,0 +1,14 @@
+CREATE TABLE slides (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  eyebrow VARCHAR(80) NULL,
+  title VARCHAR(160) NOT NULL,
+  subtitle VARCHAR(300) NULL,
+  image_url VARCHAR(500) NOT NULL,
+  cta_label VARCHAR(60) NULL,
+  cta_url VARCHAR(300) NULL,
+  align ENUM('left','center','right') NOT NULL DEFAULT 'left',
+  is_active TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

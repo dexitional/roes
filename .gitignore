@@ -1,0 +1,18 @@
+node_modules/
+.turbo/
+dist/
+.output/
+.nitro/
+.tanstack/
+.cache/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Uploaded and imported product images (see README "Images")
+apps/web/storage/
+
+# Local Nitro build dir (see README "Root-owned folders")
+apps/web/.nitro-local/

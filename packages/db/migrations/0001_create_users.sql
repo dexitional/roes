@@ -1,0 +1,20 @@
+CREATE TABLE users (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  full_name VARCHAR(150) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  phone VARCHAR(20) NULL,
+  google_sub VARCHAR(100) NULL,
+  avatar_url VARCHAR(500) NULL,
+  role ENUM('customer','staff','admin') NOT NULL DEFAULT 'customer',
+  password_hash VARCHAR(100) NULL,
+  is_active TINYINT(1) NOT NULL DEFAULT 1,
+  failed_login_attempts INT NOT NULL DEFAULT 0,
+  locked_until DATETIME NULL,
+  last_login_at DATETIME NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_users_email (email),
+  UNIQUE KEY uq_users_google (google_sub),
+  KEY ix_users_role (role)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

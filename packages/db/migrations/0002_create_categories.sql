@@ -1,0 +1,22 @@
+CREATE TABLE categories (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  legacy_id INT NULL,
+  parent_id INT UNSIGNED NULL,
+  name VARCHAR(120) NOT NULL,
+  slug VARCHAR(140) NOT NULL,
+  tagline VARCHAR(200) NULL,
+  description MEDIUMTEXT NULL,
+  image_url VARCHAR(500) NULL,
+  seo_title VARCHAR(120) NULL,
+  seo_description VARCHAR(300) NULL,
+  is_featured TINYINT(1) NOT NULL DEFAULT 0,
+  is_active TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_categories_slug (slug),
+  UNIQUE KEY uq_categories_legacy (legacy_id),
+  KEY ix_categories_parent (parent_id),
+  CONSTRAINT fk_categories_parent FOREIGN KEY (parent_id) REFERENCES categories (id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
